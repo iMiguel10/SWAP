@@ -28,6 +28,6 @@
 
 **Autor:**  *Miguel Jiménez Cazorla*
 
-**Compañero Practicas/Trabajo:** *Juan Diego Berraquero Romero *
+**Compañero Practicas/Trabajo:** *Juan Diego Berraquero Romero*
 
 ---
