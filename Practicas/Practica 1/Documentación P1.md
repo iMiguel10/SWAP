@@ -19,7 +19,7 @@ El resultado de ejecutar estas tareas se debe documentar usando un archivo de te
 
 ## Resolución
 
-***
+---
 
 Para hacer que las máquinas estén en la misma red y tengan conectividad es necesario añadirles un nuevo adaptador de red, en este caso uno de red interna, e ir al archivo de configuración de las interfaces de red del servidor y añadir la nueva interfaz.  
 
@@ -50,7 +50,7 @@ broadcast 192.168.1.255
 ![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%201/Captura%20Demo%202%20maquinas.JPG)
 
 
-***
+---
 
 ### SSH
 
@@ -59,6 +59,37 @@ Una vez comprobado que todo funciona procedemos a conectarnos con la siguiente o
 
 `shh usuario@ip_destino`
 
-En mi caso voy a conectar la máquina 1 a la máquina 2: `ssh miguel@192.168.1.101`
+En mi caso voy a conectar la máquina 1 a la máquina 2: `ssh miguel@192.168.1.101`  
+Una vez conectadas las 2 maquinas creo una carpeta y un archivo con la máquina 1 remotamente, y con la máquina 2 lo visualizo, como se puede ver en la siguiente imagen.
+
+`mkdir nombreCarpeta` : *Crear la carpeta*
+
+`touch archivo.extension`: *Crear archivo*
+
+`ls -l  directorioCreacion`: *Visualizar los cambios realizados remotamente*
 
 ![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%201/Captura%20SSH.JPG)
+
+---
+
+### CURL
+
+Para utilizar curl es necesario descargarlo con antelación `apt-get install curl`.  
+Una vez descargado vamos a crear en las dos máquinas un archivo HTML para poder descargarlo con curl desde la otra máquina, el archivo se creará en /var/www/html y se llamará hola.html y contendrá lo siguiente:  
+
+~~~
+<HTML>  
+  <BODY>  
+    Esto funciona en la máquina ?  
+  </BODY>  
+</HTML>  
+~~~
+
+**IMPORTANTE** : El servicio de apache debe estar en funcionamiento.  
+Para comprobar si está funcionando `systemctl status apache2`.  
+Para iniciarlo ( en caso de que no lo esté ) `systemctl start apache2`.   
+Para comprobar si está instalado `apache2 -v`.  
+Para instalar ( en caso de no tenerlo ) `apt-get install apache2`.  
+
+
+
