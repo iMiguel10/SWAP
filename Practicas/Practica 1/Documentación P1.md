@@ -24,7 +24,8 @@ Para hacer que las máquinas estén en la misma red es necesario añadirles un n
 `vi /etc/network/interfaces`  
 
 ### Máquina 1  
-> 
+~~~
+ 
 auto enp0s8  
 iface enp0s8 inet static  
 address 192.168.1.100  
@@ -33,4 +34,5 @@ netmask 255.255.255.0
 network 192.168.1.0  
 broadcast 192.168.1.255
 
-Para mostrar que las máquinas tienen conectividad entre ellas e incluso a internet mostraré una captura haciendo un simple ping.
+~~~
+
