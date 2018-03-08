@@ -62,7 +62,7 @@ Una vez comprobado que todo funciona procedemos a conectarnos con la siguiente o
 `shh usuario@ip_destino`
 
 En mi caso voy a conectar la máquina 1 a la máquina 2: `ssh miguel@192.168.1.101`  
-Una vez conectadas las 2 maquinas creo una carpeta y un archivo con la máquina 1 remotamente, y con la máquina 2 lo visualizo, como se puede ver en la siguiente imagen.
+Una vez conectadas las 2 maquinas creo una carpeta y un archivo con la máquina 1 remotamente, y con la máquina 2 lo visualizo, como se puede ver en la siguiente imagen:
 
 `mkdir nombreCarpeta` : *Crear la carpeta*
 
@@ -86,6 +86,11 @@ Una vez descargado vamos a crear en las dos máquinas un archivo HTML para poder
   </BODY>  
 </HTML>  
 ~~~
+
+`curl http://ip_maquina/hola.html`  
+`curl http://192.168.1.101/hola.html` : Desde la máquina 1  
+`curl http://192.168.1.100/hola.html` : Desde la máquina 2  
+
 
 ![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%201/Captura%20CURL%20completa.JPG)
 
