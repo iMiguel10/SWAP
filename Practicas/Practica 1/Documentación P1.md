@@ -1,8 +1,8 @@
-#**PRACTICA 1:** Presentación de las prácticas y preparación de las herramientas
+# **PRACTICA 1:** Presentación de las prácticas y preparación de las herramientas
 
 ---
 
-##Cuestiones a resolver
+## Cuestiones a resolver
 
 En esta práctica el objetivo es configurar las máquinas virtuales para trabajar en prácticas posteriores, asegurando la conectividad entre dichas máquinas.  
  
@@ -22,14 +22,15 @@ El resultado de ejecutar estas tareas se debe documentar usando un archivo de te
 Para hacer que las máquinas estén en la misma red es necesario añadirles un nuevo adaptador de red, en este caso uno de red interna, e ir al archivo de configuración de las interfaces de red del servidor y añadir la nueva interfaz.  
 
 `vi /etc/network/interfaces`  
-| Máquina 1 | Máquina 2 |
-| :----------: | :----------: |  
-| auto enp0s8 | auto enp0s8 |  
-| iface enp0s8 inet static | iface enp0s8 inet static |
-| address 192.168.1.100 | address 192.168.1.101 |
-| gateway 192.168.1.1 | gateway 192.168.1.1 |
-| netmask 255.255.255.0 | netmask 255.255.255.0 |
-| network 192.168.1.0 | network 192.168.1.0 |
-| broadcast 192.168.1.255 | broadcast 192.168.1.255 |
+
+### Máquina 1  
+> 
+auto enp0s8  
+iface enp0s8 inet static  
+address 192.168.1.100  
+gateway 192.168.1.1  
+netmask 255.255.255.0  
+network 192.168.1.0  
+broadcast 192.168.1.255
 
 Para mostrar que las máquinas tienen conectividad entre ellas e incluso a internet mostraré una captura haciendo un simple ping.
