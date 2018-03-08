@@ -50,6 +50,8 @@ broadcast 192.168.1.255
 ![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%201/Captura%20Demo%202%20maquinas.JPG)
 
 
+**NOTA** : El sistema operativo de las máquinas es Ubuntu 16.04.3 Server AMD64.
+
 ---
 
 ### SSH
@@ -84,6 +86,8 @@ Una vez descargado vamos a crear en las dos máquinas un archivo HTML para poder
   </BODY>  
 </HTML>  
 ~~~
+
+![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%201/Captura%20CURL%20completa.JPG)
 
 **IMPORTANTE** : El servicio de apache debe estar en funcionamiento.  
 Para comprobar si está funcionando `systemctl status apache2`.  
