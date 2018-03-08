@@ -17,15 +17,16 @@ El resultado de ejecutar estas tareas se debe documentar usando un archivo de te
 
 ---
 
-##Resolución
+## Resolución
 
-Para hacer que las máquinas estén en la misma red es necesario añadirles un nuevo adaptador de red, en este caso uno de red interna, e ir al archivo de configuración de las interfaces de red del servidor y añadir la nueva interfaz.  
+***
+
+Para hacer que las máquinas estén en la misma red y tengan conectividad es necesario añadirles un nuevo adaptador de red, en este caso uno de red interna, e ir al archivo de configuración de las interfaces de red del servidor y añadir la nueva interfaz.  
 
 `vi /etc/network/interfaces`  
 
 ### Máquina 1  
 ~~~
- 
 auto enp0s8  
 iface enp0s8 inet static  
 address 192.168.1.100  
@@ -33,6 +34,31 @@ gateway 192.168.1.1
 netmask 255.255.255.0  
 network 192.168.1.0  
 broadcast 192.168.1.255
-
 ~~~
 
+### Máquina 2
+~~~
+auto enp0s8  
+iface enp0s8 inet static  
+address 192.168.1.101  
+gateway 192.168.1.1  
+netmask 255.255.255.0  
+network 192.168.1.0  
+broadcast 192.168.1.255
+~~~
+
+![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%201/Captura%20Demo%202%20maquinas.JPG)
+
+
+***
+
+### SSH
+
+Para conectar las máquinas a través de ssh es necesario tener ssh instalado y corriendo en las 2 máquinas, ya que la que va a conectar necesita el cliente y a la que se va a conectar necesita el servidor de ssh.  
+Una vez comprobado que todo funciona procedemos a conectarnos con la siguiente orden:
+
+`shh usuario@ip_destino`
+
+En mi caso voy a conectar la máquina 1 a la máquina 2: `ssh miguel@192.168.1.101`
+
+![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%201/Captura%20SSH.JPG)
