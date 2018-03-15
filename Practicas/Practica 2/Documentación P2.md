@@ -30,7 +30,7 @@ Para probar el funcionamiento de la copia de archivos por ssh hemos utilizado el
 
 Se puede ver en la siguiente imagen:
 
-[CAPTURA TAR]
+![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%202/Captura%20tar.PNG)
 
 ---
 
@@ -46,7 +46,8 @@ Una vez instalado ya podemos hacer el clonado de carpetas entre las 2 máquinas 
 
 Se puede ver en la siguiente imagen:
 
-[CAPTURA RSYNC]
+![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%202/Captura%20rsync.PNG)
+
 
 **NOTA**: En este caso vamos a trabajar en modo usuario, y como detalle previo, tenemos que hacer que el usuario sea el dueño de la carpeta donde residen los archivos que hay en el espacio web (en ambas máquinas):  
 `sudo chown miguel:miguel –R /var/www`
@@ -66,7 +67,8 @@ Para la configuración de las máquinas para el acceso por ssh sin que solicite 
 
 Para ver que funciona dejo la siguiente captura:
 
-[CAPTURA SSH SIN CONTRASEÑA]
+![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%202/Captura%20ssh%20sin%20contraseña.PNG)
+
   
 
 ---
@@ -79,10 +81,10 @@ Para establecer una tarea en cron que se ejecute cada hora para mantener actuali
 
 ~~~
 
-`0 * * * * miguel rsync -avz -e ssh 192.168.1.100:/var/www/ /home/miguel/`
+0 * * * * miguel rsync -avz -e ssh 192.168.1.100:/var/www/ /home/miguel/
 
 ~~~
 
-[CAPTURA CRONTAB]
+![imagen](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%202/Captura%20crontab.PNG)
 
 ---
