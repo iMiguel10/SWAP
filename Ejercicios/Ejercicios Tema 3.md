@@ -76,6 +76,7 @@ Para ello, la mejor solución es hacer que ese ordenador servidor tenga dos tarj
     <li>En Configuración opcional, haga clic en Filtrado TCP/IP y en Propiedades.</li>
     <li>Active la casilla de verificación Habilitar filtrado TCP/IP (todos los adaptadores).</li>
 
+
 *NOTA*  
 Al activar esta casilla de verificación, se habilita el filtrado para todos los adaptadores, pero los filtros se configuran de forma individual para cada adaptador. Los mismos filtros no sirven para todos los adaptadores.
 </ul>
@@ -131,6 +132,7 @@ La configuración por defecto de un firewall debería ser, traducido al español
     <li>iptables -P OUTPUT DROP</li>
 </ul>
 Con esto nos quedaremos sin internet, por lo que a continuación debemos empezar a crear reglas permisivas.
+
 
 [Información Linux](https://www.redeszone.net/gnu-linux/iptables-configuracion-del-firewall-en-linux-con-iptables/)
 
