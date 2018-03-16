@@ -64,7 +64,33 @@ Para ello, la mejor solución es hacer que ese ordenador servidor tenga dos tarj
 
 ### T3.2 : Buscar con qué órdenes de terminal o herramientas gráficas podemos configurar bajo Windows y bajo Linux el filtrado y bloqueo de paquetes. 
 
-Los principales comandos de IPtables son los siguientes (argumentos de una orden):  
+##### WINDOWS
+
+**Para configurar la seguridad TCP/IP:**  
+<ul>
+    <li>Haga clic en Inicio, seleccione Panel de control, Conexiones de red y haga clic en la conexión de área local que desee configurar.</li>
+    <li>En el cuadro de diálogo Estado de conexión, haga clic en Propiedades.</li>
+    <li>Haga clic en Protocolo Internet (TCP/IP)y, después, en Propiedades.</li>
+    <li>En el cuadro de diálogo Propiedades de Protocolo Internet (TCP/IP), haga clic en Opciones avanzadas</li>
+    <li>y, a continuación, en Opciones.</li>
+    <li>En Configuración opcional, haga clic en Filtrado TCP/IP y en Propiedades.</li>
+    <li>Active la casilla de verificación Habilitar filtrado TCP/IP (todos los adaptadores).</li>
+
+*NOTA*  
+Al activar esta casilla de verificación, se habilita el filtrado para todos los adaptadores, pero los filtros se configuran de forma individual para cada adaptador. Los mismos filtros no sirven para todos los adaptadores.
+
+    <li>En el cuadro de diálogo Filtrado TCP/IPhay tres secciones en las que puede configurar el filtrado para puertos TCP, puertos UDP (protocolo de datagramas de usuarios) y protocolos Internet. Para cada sección, establezca la configuración de seguridad adecuada para el equipo que utiliza.</li>
+</ul>
+
+*NOTA*  
+Cuando la opción Permitir todos está activada, se permiten todos los paquetes para el tráfico TCP o UDP. Permitir sólo permite únicamente el tráfico TCP o UDP seleccionado al agregar los puertos permitidos. Para especificar los puertos, se utiliza el botón Agregar. Para bloquear todo el tráfico UDP o TCP, haga clic en Permitir sólo y no agregue ningún número de puerto en las columnas Puertos UDP y Puertos TCP. No se puede bloquear el tráfico UDP o TCP seleccionando Permitir sólo para Protocolos IP y excluyendo los protocolos IP 6 y 17. 
+
+[Información Windows](http://recursostic.educacion.es/observatorio/web/ca/equipamiento-tecnologico/redes/74-enrutamiento-del-trafico-entre-subredes)
+
+
+##### LINUX
+
+**Los principales comandos de IPtables son los siguientes (argumentos de una orden):**  
 <ul>
     <li>-A –append → agrega una regla a una cadena.</li>
     <li>-D –delete → borra una regla de una cadena especificada.</li>
@@ -79,7 +105,7 @@ Los principales comandos de IPtables son los siguientes (argumentos de una orden
     <li>-E –rename-chain → cambia el orden de una cadena.</li>
 </ul>
 
-Condiciones principales para Iptables:
+**Condiciones principales para Iptables:**
 <ul>
     <li>-p –protocol → la regla se aplica a un protocolo.</li>
     <li>-s –src –source → la regla se aplica a una IP de origen.</li>
@@ -88,14 +114,14 @@ Condiciones principales para Iptables:
     <li>-o –out-interface → la regla se aplica a una interfaz de destino.</li>
 </ul>
 
-Condiciones TCP/UDP
+**Condiciones TCP/UDP**
 <ul>
     <li>-sport –source-port → selecciona o excluye puertos de un determinado puerto de origen.</li>
     <li>-dport –destination-port → selecciona o excluye puertos de un determinado puerto de destino.</li>
 </ul>  
 Existen muchas mas condiciones para una configuración avanzada del firewall, pero las elementales ya las tenemos listadas.
 
-Configurar reglas por defecto
+**Configurar reglas por defecto**  
 La configuración por defecto de un firewall debería ser, traducido al español, “bloquear todo excepto [reglas]”. Para configurar el firewall para que bloquee todas las conexiones debemos teclear:
 <ul>
     <li>iptables -P INPUT DROP</li>
