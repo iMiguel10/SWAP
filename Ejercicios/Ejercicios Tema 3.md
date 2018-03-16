@@ -67,33 +67,44 @@ Para ello, la mejor solución es hacer que ese ordenador servidor tenga dos tarj
 Los principales comandos de IPtables son los siguientes (argumentos de una orden):  
 <ul>
     <li>-A –append → agrega una regla a una cadena.</li>
+    <li>-D –delete → borra una regla de una cadena especificada.</li>
+    <li>-R –replace → reemplaza una regla.</li>
+    <li>-I –insert → inserta una regla en lugar de una cadena.</li>
+    <li>-L –list → muestra las reglas que le pasamos como argumento.</li>
+    <li>-F –flush → borra todas las reglas de una cadena.</li>
+    <li>-Z –zero → pone a cero todos los contadores de una cadena.</li>
+    <li>-N –new-chain → permite al usuario crear su propia cadena.</li>
+    <li>-X –delete-chain → borra la cadena especificada.</li>
+    <li>-P –policy → explica al kernel qué hacer con los paquetes que no coincidan con ninguna regla.</li>
+    <li>-E –rename-chain → cambia el orden de una cadena.</li>
 </ul>
--D –delete → borra una regla de una cadena especificada.
--R –replace → reemplaza una regla.
--I –insert → inserta una regla en lugar de una cadena.
--L –list → muestra las reglas que le pasamos como argumento.
--F –flush → borra todas las reglas de una cadena.
--Z –zero → pone a cero todos los contadores de una cadena.
--N –new-chain → permite al usuario crear su propia cadena.
--X –delete-chain → borra la cadena especificada.
--P –policy → explica al kernel qué hacer con los paquetes que no coincidan con ninguna regla.
--E –rename-chain → cambia el orden de una cadena.
+
 Condiciones principales para Iptables:
--p –protocol → la regla se aplica a un protocolo.
--s –src –source → la regla se aplica a una IP de origen.
--d –dst –destination → la regla se aplica a una Ip de destino.
--i –in-interface → la regla de aplica a una interfaz de origen, como eth0.
--o –out-interface → la regla se aplica a una interfaz de destino.
+<ul>
+    <li>-p –protocol → la regla se aplica a un protocolo.</li>
+    <li>-s –src –source → la regla se aplica a una IP de origen.</li>
+    <li>-d –dst –destination → la regla se aplica a una Ip de destino.</li>
+    <li>-i –in-interface → la regla de aplica a una interfaz de origen, como eth0.</li>
+    <li>-o –out-interface → la regla se aplica a una interfaz de destino.</li>
+</ul>
+
 Condiciones TCP/UDP
--sport –source-port → selecciona o excluye puertos de un determinado puerto de origen.
--dport –destination-port → selecciona o excluye puertos de un determinado puerto de destino.
+<ul>
+    <li>-sport –source-port → selecciona o excluye puertos de un determinado puerto de origen.</li>
+    <li>-dport –destination-port → selecciona o excluye puertos de un determinado puerto de destino.</li>
+</ul>  
 Existen muchas mas condiciones para una configuración avanzada del firewall, pero las elementales ya las tenemos listadas.
+
 Configurar reglas por defecto
 La configuración por defecto de un firewall debería ser, traducido al español, “bloquear todo excepto [reglas]”. Para configurar el firewall para que bloquee todas las conexiones debemos teclear:
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -P OUTPUT DROP
+<ul>
+    <li>iptables -P INPUT DROP</li>
+    <li>iptables -P FORWARD DROP</li>
+    <li>iptables -P OUTPUT DROP</li>
+</ul>
 Con esto nos quedaremos sin internet, por lo que a continuación debemos empezar a crear reglas permisivas.
+
+[Información Linux](https://www.redeszone.net/gnu-linux/iptables-configuracion-del-firewall-en-linux-con-iptables/)
 
 ---
 
