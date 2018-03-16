@@ -78,14 +78,16 @@ Para ello, la mejor solución es hacer que ese ordenador servidor tenga dos tarj
 
 *NOTA*  
 Al activar esta casilla de verificación, se habilita el filtrado para todos los adaptadores, pero los filtros se configuran de forma individual para cada adaptador. Los mismos filtros no sirven para todos los adaptadores.
+</ul>
 
+<ul>
     <li>En el cuadro de diálogo Filtrado TCP/IPhay tres secciones en las que puede configurar el filtrado para puertos TCP, puertos UDP (protocolo de datagramas de usuarios) y protocolos Internet. Para cada sección, establezca la configuración de seguridad adecuada para el equipo que utiliza.</li>
 </ul>
 
 *NOTA*  
 Cuando la opción Permitir todos está activada, se permiten todos los paquetes para el tráfico TCP o UDP. Permitir sólo permite únicamente el tráfico TCP o UDP seleccionado al agregar los puertos permitidos. Para especificar los puertos, se utiliza el botón Agregar. Para bloquear todo el tráfico UDP o TCP, haga clic en Permitir sólo y no agregue ningún número de puerto en las columnas Puertos UDP y Puertos TCP. No se puede bloquear el tráfico UDP o TCP seleccionando Permitir sólo para Protocolos IP y excluyendo los protocolos IP 6 y 17. 
 
-[Información Windows](http://recursostic.educacion.es/observatorio/web/ca/equipamiento-tecnologico/redes/74-enrutamiento-del-trafico-entre-subredes)
+[Información Windows](https://support.microsoft.com/es-es/help/816792/how-to-configure-tcp-ip-filtering-in-windows-server-2003)
 
 
 ##### LINUX
