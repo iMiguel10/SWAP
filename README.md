@@ -22,12 +22,12 @@
 
     * P5 - (Replicación de bases de datos MySQL)
 
-* Trabajo
+* Trabajo 
 
 ---
 
 **Autor:**  *Miguel Jiménez Cazorla*
 
-**Compañero Practicas/Trabajo:** *Juan Diego Berraquero Romero*
+**Compañero Trabajo:** *Juan Diego Berraquero Romero*
 
 ---

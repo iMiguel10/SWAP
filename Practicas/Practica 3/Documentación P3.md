@@ -140,8 +140,8 @@ Un balanceador sencillo debe escuchar tráfico en el puerto 80 y redirigirlo a a
 
  defaults  
     mode http  
-    contimeout   4000  
-    clitimeout     42000  
+    contimeout    4000  
+    clitimeout    42000  
     srvtimeout    43000 
 
  frontend http-in  
@@ -172,10 +172,10 @@ Apache Benchmark (ab) es una utilidad que se instala junto con el servidor Apach
 `ab -n 1000 -c 10 http://192.168.1.200/index.html` -->  En mi caso  
 Los parámetros indicados en la orden anterior le indican al benchmark que solicite la página con dirección http://192.168.1.200/index.html 1000 veces (-n 1000 indica el número de peticiones) y hacer esas peticiones concurrentemente de 10 en 10 (-c 10 indica el nivel de concurrencia). 
 
+#### NginX
 ![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%203/Captura%20ab%20nginx.PNG)
+#### HAProxy
 ![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%203/Captura%20ab%20haproxy.PNG)
-
-[CAPTURAS DE AB - NGINX Y HAPROXY]
 
 **IMPORTANTE:** Hay que hacer ab a la dirección IP del balanceador (192.168.1.200, en mi caso).  
 
@@ -185,7 +185,9 @@ Para ver la sobrecarga de trabajo de las maquinas de la granja (máquina 1, máq
 
 `ab -n 10000 -c 10 http://192.168.1.200/index.html` --> En el cliente  
 
-![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%203/Captura%20htop%20nginx.PNG)
+#### HTOP NGINX  
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%203/Captura%20htop%20nginx.PNG)  
+#### HTOP HAPROXY  
 ![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%203/Captura%20htop%20haproxy.PNG)
 
 **Recordatorio:** Las IP de cada una de las máquinas son:  
