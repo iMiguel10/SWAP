@@ -59,7 +59,7 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 ![img]()  
 [CAPTURA FICHERO DEFAULT SSL]
 
-Activamos el sitio default--ssl y reiniciamos apache:  
+Activamos el sitio default-ssl y reiniciamos apache:  
 `a2ensite default-ssl`  
 `systemctl restart apache2`    
 
@@ -69,10 +69,29 @@ Una vez reiniciado Apache, accedemos al servidor web mediante el protocolo HTTPS
 `curl –k https://192.168.1.100/index.html` --> En mi caso  
  
 Por otra parte para copiar los archivos .crt y .key es necesario usar scp de la siguiente manera:  
+`scp usuario@ip-maquina :"ruta remota" "ruta del pc local"`  
 `scp miguel@192.168.1.100 :/etc/apache2/ssl/apache.crt "ruta del pc local"`  
 `scp miguel@192.168.1.100 :/etc/apache2/ssl/apache.key "ruta del pc local"`  
 
 Además para NginX es necesario cambiar el archivo de configuración y añadir lo siguiente:  
+~~~
+
+listen 443;
+
+ssl on;
+ssl_certificate /etc/nginx/ssl/nginx.crt;
+ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+~~~
+
+![img]()  
+[CAPTURA FICHERO NGINX CONFIGURACION]
+
+**NOTA** : Hay que tener en cuenta que el ssh debe estar corriendo, se puede ver y activar con lo siguiente:  
+`systemctl status sshd`    
+`systemctl restart sshd`    
+
+
 ---------------------------------------------------
 
 ### Configuración del Cortafuegos
