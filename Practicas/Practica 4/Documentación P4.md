@@ -56,8 +56,7 @@ SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 
 ~~~
 
-![img]()  
-[CAPTURA FICHERO DEFAULT SSL]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%204/Captura%20Default%20SSL.PNG)  
 
 Activamos el sitio default-ssl y reiniciamos apache:  
 `a2ensite default-ssl`  
@@ -84,8 +83,7 @@ ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
 ~~~
 
-![img]()  
-[CAPTURA FICHERO NGINX CONFIGURACION]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%204/Captura%20nginx%20conf.PNG)  
 
 **NOTA** : Hay que tener en cuenta que el ssh debe estar corriendo, se puede ver y activar con lo siguiente:  
 `systemctl status sshd`    
@@ -104,8 +102,7 @@ Por último, conviene comprobar el funcionamiento del cortafuegos recién config
 `netstat -tulpn | grep :80`  
 `netstat -tulpn | grep :443`  
 
-![img]()  
-[CAPTURA NETSTAT]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%204/Captura%20NETSTAT.PNG)  
 
 Lo habitual es crear un script que se ejecute en el arranque del sistema. Por ello crearemos el siguiente script que nos permitirá una configuración básica de un servidor web ( iptables.sh ).
 
@@ -146,8 +143,7 @@ Lo habitual es crear un script que se ejecute en el arranque del sistema. Por el
 
 ~~~
 
-![img]()  
-[CAPTURA IPTABLES.SH]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%204/Captura%20iptables.sh.PNG)  
 
 En cualquier momento, si hubiéramos cometido algún error, podemos poner la configuración que tenía la máquina inicialmente (permitir todo el tráfico) con el siguiente script ( limpiaiptables.sh ): 
 
@@ -170,8 +166,7 @@ En cualquier momento, si hubiéramos cometido algún error, podemos poner la con
 ~~~
 
 
-![img]()  
-[CAPTURA LIMPIAIPTABLES.SH]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%204/Captura%20limpiaiptables.sh.PNG)  
 
 **NOTA** : Acordaos de darle permisos a los .sh con *chmod +x nombre_sh.sh*  
 **NOTA** : Para que se ejecute el script cuando se inicie la máquina hay que:  
