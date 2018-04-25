@@ -24,7 +24,7 @@ Como resultado de la práctica 4 se mostrará al profesor el funcionamiento del 
 
 ---
 
-### Certificado SSL Autofirmado ( Falta pasar los archivos a las otras maquinas y al balanceador al igual que configurarlo )
+### Certificado SSL Autofirmado
 
 Para generar un certificado SSL autofirmado en Ubuntu Server solo debemos activar el módulo SSL de Apache, generar los certificados y especificarle la ruta a los certificados en la configuración. Así pues, como root ejecutaremos:  
  
