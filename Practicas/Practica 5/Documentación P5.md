@@ -25,19 +25,20 @@ Como resultado de la práctica 5 se mostrará al profesor el funcionamiento del 
 ### Crear BD
 
 Para el resto de la práctica debemos crearnos una BD en MySQL e insertar algunos datos. Así tendremos datos con los cuales hacer las copias de seguridad. En todo momento usaremos la interfaz de línea de comandos del MySQL:   
-`mysql -uroot -p`  
-`mysql> create database contactos;`    
-`mysql> use contactos;`  
-`mysql> show tables;`   
-`mysql> create table datos(nombre varchar(100),tlf int);`  
-`mysql> show tables;`  
-`mysql> insert into datos(nombre,tlf) values ("pepe",95834987);`  
-`mysql> insert into datos(nombre,tlf) values ("juan",95834111);`  
-`mysql> insert into datos(nombre,tlf) values ("miguel",95834521);`  
-`mysql> select * from datos; `  
+~~~
+mysql -uroot -p
+mysql> create database contactos; 
+mysql> use contactos;
+mysql> show tables;
+mysql> create table datos(nombre varchar(100),tlf int);
+mysql> show tables; 
+mysql> insert into datos(nombre,tlf) values ("pepe",95834987);
+mysql> insert into datos(nombre,tlf) values ("juan",95834111);
+mysql> insert into datos(nombre,tlf) values ("miguel",95834521);
+mysql> select * from datos; `  
+~~~
 
-![img]()  
-[CAPTURA CREAR BD]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20crear%20BD.PNG)  
 
 ---
 
@@ -47,20 +48,23 @@ MySQL ofrece la una herramienta para clonar las BD que tenemos en nuestra maquin
 Esta herramienta soporta una cantidad considerable de opciones. Ejecuta como root el siguiente comando:  `mysqldump --help` para obtener la lista completa. En la siguiente URL se explican con detalle todas las opciones posibles: http://dev.mysql.com/doc/refman/5.0/es/mysqldump.html  
 
 Así, en el servidor de BD principal (maquina1) hacemos:  
-`mysql -u root –p`  
-`mysql> FLUSH TABLES WITH READ LOCK;`  
-`mysql> quit`  
+~~~
+mysql -u root –p  
+mysql> FLUSH TABLES WITH READ LOCK;  
+mysql> quit 
+~~~
 
 Ahora ya sí podemos hacer el mysqldump para guardar los datos. En el servidor principal (maquina1) hacemos: 
 `mysqldump ejemplodb -u root -p > /tmp/ejemplodb.sql`   
 `mysqldump contactos -u root -p > /tmp/contactos.sql` --> En mi caso  
 Como habíamos bloqueado las tablas, debemos desbloquearlas (quitar el “LOCK”):  
-`mysql -u root –p `  
-`mysql> UNLOCK TABLES; `  
-`mysql> quit `  
+~~~
+mysql -u root –p   
+mysql> UNLOCK TABLES;   
+mysql> quit   
+~~~
 
-![img]()  
-[CAPTURA CLONAR BD]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20clonar%20BD.PNG)  
 
 Ya podemos ir a la máquina esclavo (maquina2, secundaria) para copiar el archivo .SQL con todos los datos salvados desde la máquina principal (maquina1):  
 `scp maquina1:/tmp/ejemplodb.sql /tmp/`   
@@ -68,8 +72,7 @@ Ya podemos ir a la máquina esclavo (maquina2, secundaria) para copiar el archiv
 y habremos copiado desde la máquina principal (1) a la máquina secundaria (2) los datos que hay almacenados en la BD.
 
 
-![img]()  
-[CAPTURA PASO DE BD]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20paso%20de%20BD.PNG)  
 
 ---
 
@@ -77,21 +80,24 @@ y habremos copiado desde la máquina principal (1) a la máquina secundaria (2) 
 Una vez que ya tenemos el archivo .sql en la segunda máquina pasamos a restaurarla, pero la orden mysqldump no incluye en ese archivo la sentencia para crear la BD (es necesario que nosotros la creemos en la máquina secundaria en un primer paso, antes de restaurar las tablas de esa BD y los datos contenidos en éstas). 
  
 Para importar la BD completa en el MySQL, debemos en un primer paso crear la BD:  
-`mysql -u root –p`   
-`mysql> CREATE DATABASE ‘ejemplodb’;`  
-`mysql> CREATE DATABASE contactos;`  
-`mysql> quit`   
+~~~
+mysql -u root –p   
+mysql> CREATE DATABASE ‘ejemplodb’;  
+mysql> CREATE DATABASE contactos;  
+mysql> quit   
+~~~
 Y en un segundo paso restauramos los datos contenidos en la BD (se crearán las tablas en el proceso):  
 `mysql -u root -p ejemplodb  < /tmp/ejemplodb.sql`  
 `mysql -u root -p contactos  < /tmp/contactos.sql`  
 
 Para comprobar su correcto funcionamiento hacemos lo siguiente:  
-`mysql -uroot -p`  
-`mysql> use contactos;`  
-`mysql> select * from datos; `  
+~~~
+mysql -uroot -p  
+mysql> use contactos;  
+mysql> select * from datos;  
+~~~
 
-![img]()  
-[CAPTURA IMPORTACION DE BD]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20importacion%20de%20BD.PNG)  
 
 ---
 
@@ -122,9 +128,7 @@ server-id = 2 --> Para M2 (Esclavo)
 log_bin = /var/log/mysql/bin.log 
 ~~~
 
-![img]()  
-[CAPTURA MYSQL CONFIGURACION]
- 
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20conf%20mysql.PNG)   
 
 Guardamos el documento y reiniciamos el servicio:  
 `systemctl restart mysql` 
@@ -144,9 +148,7 @@ Para finalizar con la configuración en el maestro, obtenemos los datos de la BD
 mysql> SHOW MASTER STATUS;
 ~~~
 
-![img]()  
-[CAPTURA MYSQL CONF 2]
-
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20conf%20mysql%202.PNG)  
 
 Volvemos a la máquina esclava, entramos en mysql y le damos los datos del maestro. 
 (ojo con la IP, con el valor de "master_log_file" y del "master_log_pos" del maestro): 
@@ -172,11 +174,11 @@ Ahora, si queremos asegurarnos de que todo funciona perfectamente y que el escla
 ~~~
 mysql> SHOW SLAVE STATUS\G 
 ~~~
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20behind%20master%200.PNG)  
 
 Ahora, podemos hacer pruebas en el maestro y deberían replicarse en el esclavo automáticamente. 
  
-![img]()  
-[CAPTURA FUNCIONAMIENTO M-E]
+![img](https://github.com/iMiguel10/SWAP/blob/master/Practicas/Practica%205/Captura%20funcionamiento%20maestro%20esclavo.PNG)  
 
 **NOTA**: En caso de que se produzca el error: *Fatal error: The slave I/O thread stops because master and slave have equal MySQL server UUIDs;* es necesario realizar lo siguiente:
 
